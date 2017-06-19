@@ -1,4 +1,4 @@
-# Buckelist Scheduler
+# Buckelist Application
 ## Description
      
      This application allows a person to create bucketlists and add
