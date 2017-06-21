@@ -1,10 +1,6 @@
-# views file
-"""
-
-"""
-from flask import render_template
-
+from flask  import render_template
 from app import app
+
 
 
 @app.route('/')
@@ -44,7 +40,7 @@ def inprogress():
     """
     Renders the inprogress page containing  bucketlists that are not yet fully done
     """
-    return render_template('/inprogress.html')
+    return render_template('inprogress.html')
 
 
 @app.route('/newbucketlists')
@@ -55,9 +51,9 @@ def newbucketlists():
     return render_template('newbucketlists.html')
 
 
-@app.route('completed')
+@app.route('/completed')
 def completed():
     """
     This returns a rendered page of all completed bucketlists
     """
-    return render_template('/completed.html')
+    return render_template('completed.html')
