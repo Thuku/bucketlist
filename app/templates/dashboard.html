@@ -4,7 +4,8 @@
     <title>
         BucketList
     </title>
-    <link rel="stylesheet" type="text/css" href="res/css/materialize.css">
+    <script src="js/materialize.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/materialize.css') }}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
@@ -38,13 +39,13 @@
                 <div class="col s3">
                     <ul class="side-nav fixed" style="top:64px">
                         <li>
-                            <a href="create.html" class="waves-effect waves-light btn-large"><i class="material-icons left">add</i>Create</a>
+                            <a href="create.html" class="btn-large"><i class="material-icons left">add</i>Create</a>
                         </li>
                         <li><a href="newbucketlists.html"><i class="material-icons">info</i>New Bucket lists</a></li>
                         <li>
                             <div class="divider"></div>
                         </li>
-                        <li><a href="inprogress.html"><i class="material-icons">schedule</i>Bucket lists in progress</a></li>
+                        <li><a href="inprogress.html"><i class="material-icons">schedule</i> Bucket lists in progress</a></li>
                         <li>
                             <div class="divider"></div>
                         </li>
@@ -55,13 +56,12 @@
 
                 <div class="col s9">
                     <div class="container">
-                        <h3 class="">Completed Bucket Lists</h3>
                         <table>
                             <thead>
                                 <tr>
                                     <th>ID</th>
                                     <th>Bucket list</th>
-
+                                    <th>Status</th>
                                 </tr>
                             </thead>
 
@@ -69,21 +69,22 @@
                                 <tr>
                                     <td>1</td>
                                     <td>Bucket list 1</td>
-
+                                    <td>Completed</td>
                                 </tr>
                                 <tr>
                                     <td>2</td>
                                     <td>Bucket list 2</td>
-
+                                    <td>In progress</td>
                                 </tr>
                                 <tr>
                                     <td>3</td>
                                     <td>Bucket list 3</td>
-
+                                    <td>In progress</td>
                                 </tr>
                                 <tr>
                                     <td>4</td>
-                                    <td>Bucket list 4 </td>
+                                    <td>Bucket list </td>
+                                    <td>Completed</td>
                                 </tr>
                             </tbody>
                         </table>
