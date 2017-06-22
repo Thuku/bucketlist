@@ -1,4 +1,4 @@
-from app.bucketlist_acc import BucketLists
+from app.bucketlist_module import BucketLists
 
 
 class BucketListItems(object):
@@ -15,5 +15,5 @@ class BucketListItems(object):
                 l.append(item)
                 print(l)
 
-            # print(values)
-            # print(all_buckets)
+                # print(values)
+                # print(all_buckets)

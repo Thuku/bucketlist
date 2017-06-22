@@ -10,7 +10,7 @@ class Accounts(object):
     def __init__(self):
         self.users = []
 
-    def create_user(self, email, password,confirm_password):
+    def create_user(self, email, password, confirm_password):
         """
         Create a new user in the list
         """

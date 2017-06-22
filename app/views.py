@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect
-from app.accounts import Accounts
-from app.bucketlist_acc import BucketLists
-from app.bucketlist_item import BucketListItems
+from app.user_module import Accounts
+from app.bucketlist_module import BucketLists
+from app.items_module import BucketListItems
 
 from app import app
 
