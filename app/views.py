@@ -6,7 +6,7 @@ from app.bucketlist_item import BucketListItems
 from app import app
 
 account = Accounts()
-bucketlist=BucketLists()
+bucketlist = BucketLists()
 activity = BucketListItems()
 
 
@@ -36,7 +36,7 @@ def signup():
         email = request.form['email']
         password = request.form['password']
         confirm_password = request.form['confirm_password']
-        account.create_user(email, password,confirm_password)
+        account.create_user(email, password, confirm_password)
         return redirect('/')
     else:
         return render_template('signup.html')
@@ -47,7 +47,7 @@ def dashboard():
     """
     Renders the dashboard page
     """
-    bucketlists=BucketLists.bucketlists
+    bucketlists = BucketLists.bucketlists
     return render_template("dashboard.html", data=bucketlists)
 
 
@@ -59,7 +59,7 @@ def create_bucketlist():
     if request.method == "POST":
         bucketlist_name = request.form['bucketlist_name']
         activity = []
-        name = bucketlist.create_bucket_list(bucketlist_name,activity)
+        name = bucketlist.create_bucket_list(bucketlist_name, activity)
         return redirect('/add_activity/' + name)
     return render_template('create.html')
 
@@ -96,7 +96,7 @@ def add_activity():
         item = request.form['activity']
         name = request.form['title']
         activity.add_activity(name, item)
-        return redirect('/add_activity/'+name)
+        return redirect('/add_activity/' + name)
 
 
 @app.route('/add_activity/<title>')
