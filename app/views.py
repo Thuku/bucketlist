@@ -100,12 +100,7 @@ def add_activity():
             name = request.form['title']
             bucket_item.add_activity(name, item)
             bucket_items = bucket_item.get_items_of_bucket(name)
-            bucket_items_dict=[]
-            for i in range(len(bucket_items)):
-                item={"key":i+1,"value":bucket_items[i]}
-                bucket_items_dict.append(item)
-            print(bucket_items_dict)
-            return render_template('add_activity.html',data=bucket_items_dict)
+            return redirect('/add_activity/'+name)
         else:
             name = request.form['title']
             bucket_items = bucket_item.get_items_of_bucket(name)
@@ -114,7 +109,7 @@ def add_activity():
                 item={"key":i+1,"value":bucket_items[i]}
                 bucket_items_dict.append(item)
             print(bucket_items_dict)
-            return render_template('add_activity.html',data=bucket_items_dict)
+            return render_template('add_activity.html/',data=bucket_items_dict)
     
     return redirect(url_for('home'))
 
