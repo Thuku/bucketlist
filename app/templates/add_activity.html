@@ -4,7 +4,7 @@
     <title>
         BucketList
     </title>
-    <script src="js/materialize.js"></script>
+    <script src="{{ url_for('static', filename='js/materialize.js') }}"></script>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/materialize.css') }}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
@@ -85,6 +85,27 @@
                     </div>
 
                 </div>
+                <div class="container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Item</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                {% for item in data %}
+
+                                <tr>
+                                    <td>{{ item['key'] }}</td>
+                                    <td>{{ item['value'] }}</td>
+                                </tr>
+                                {% endfor %}
+
+                            </tbody>
+                        </table>
+                    </div>
             </div>
 
         </div>

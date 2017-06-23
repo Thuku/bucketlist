@@ -4,46 +4,48 @@
     <title>
         BucketList
     </title>
-    <script src="js/materialize.js"></script>
+    <script src="{{ url_for('static', filename='js/materialize.js') }}"></script>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/materialize.css') }}">
 </head>
 
 <body>
-<div>
-    <nav class="center-align blue darken-3 " role="navigation">
-        <div class="nav-wrapper container">
-            <label style="font-size:200%;" for="">BucketList Application</label>
+    <div>
+        <nav class="center-align blue darken-3 " role="navigation">
+            <div class="nav-wrapper container">
+                <label style="font-size:200%;" for="">BucketList Application</label>
 
-        </div>
-    </nav>
-    <br>
-    <br>
-    <div class="container center-align">
-        <div style="display: inline-block;">
-            <form action="/" method="post">
-                <p>
-                    <label for="email" required>Email address</label>
-                    <input type="email" name="email">
+            </div>
+        </nav>
+        <br>
+        <br>
+        <div class="container center-align">
+            <div style="display: inline-block;">
+                <form action="/" method="post">
+                    <p>
+                        <label for="email" required>Email address</label>
+                        <input type="email" name="email">
 
-                </p>
-                <p>
-                    <label for="password" required>Password</label>
-                    <input type="password" name="password">
-                </p>
-                <br>
-                <p>
-                    <button class="btn waves-effect waves-light" type="submit">Login
+                    </p>
+                    <p>
+                        <label for="password" required>Password</label>
+                        <input type="password" name="password">
+                    </p>
+                    <br>
+                    <p>
+                        <button class="btn waves-effect waves-light" type="submit">Login
                         <i class="material-icons right"></i>
                     </button>
-                </p>
-                <label for="" class="right"><a href="/signup">Sign Up</a></label>
-                </p>
+                    </p>
+                    <p>
+                    <label for="" class="right">New user sign up here<a href="/signup"> <button class="waves-effect waves-teal btn-flat" style="text-color:alert">Sign Up
+                        </a></label>
+                    </p>
 
-            </form>
+                </form>
+            </div>
+
         </div>
-
     </div>
-</div>
 </body>
 
 </html>

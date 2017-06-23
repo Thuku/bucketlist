@@ -4,7 +4,7 @@
     <title>
         BucketList
     </title>
-    <script src="js/materialize.js"></script>
+    <script src="{{ url_for('static', filename='js/materialize.js') }}"></script>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/materialize.css') }}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
@@ -65,22 +65,17 @@
                             </thead>
 
                             <tbody>
+             
+                                 {% for bucketlist in data %}
+
                                 <tr>
-                                    <td>1</td>
-                                    <td>Bucket list 1</td>
+                                    <td>{{data.index(bucketlist)+1}}</td>
+                                    <td>{{ bucketlist['name'] }}</td>
+                                    <td>{{ bucketlist['status'] }}</td>
+                                    <td> <a href="{{'/add_activity/' + bucketlist['name']}}" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Bucket list 2</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Bucket list 3</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Bucket list </td>
-                                </tr>
+                                {% endfor %}
                             </tbody>
                         </table>
                     </div>
