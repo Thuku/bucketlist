@@ -20,3 +20,12 @@ class FlaskAppTestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 400)
         response = self.app.get('/signup')
         self.assertEqual(response.status_code, 200)
+    def test_create_bucket_route(self):
+        response = self.app.post('/create')
+        answer = ValueError('View function did not return a response')
+        self.assertEqual(response.status_code, answer)
+    
+    def test_dashboard(self):
+        response = self.app.get('/dashboard')
+        self.assertEqual(response.status_code, 302)
+

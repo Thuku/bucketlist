@@ -75,7 +75,7 @@ def before_request():
         g.user = session['user']
 
 
-@app.route('/dashboard')
+@app.route('/dashboard', methods=['GET'])
 def dashboard():
     if g.user:
         buckets = BucketLists.bucketlists
