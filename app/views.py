@@ -1,12 +1,12 @@
-from flask import Flask, session,json, render_template, request, redirect, g, url_for, flash
+from flask import Flask, session, json, render_template, request, redirect, g, url_for, flash
 import os
 from app import app
 from app.bucketlist_module import BucketLists
 from app.items_module import BucketListItems
 from app.user_module import User
 user = User()
-bucketlist=BucketLists()
-bucket_item=BucketListItems()
+bucketlist = BucketLists()
+bucket_item = BucketListItems()
 
 app.secret_key = os.urandom(24)
 
@@ -19,14 +19,14 @@ def home():
         session.pop('user', None)
         email = request.form['email']
         password = request.form['password']
-        bool = user.login(email,password)
+        bool = user.login(email, password)
         if bool == True:
             session['user'] = request.form['email']
             return redirect(url_for('dashboard'))
         # if request.form['password'] == 'password':
         #     session['user'] = request.form['email']
         #     return redirect(url_for('dashboard'))
-       
+
     flash('Hello world!', 'success')
     return render_template('index.html')
 
@@ -52,21 +52,23 @@ def signup():
     else:
         return render_template('signup.html')
 
+
 @app.route('/create', methods=['GET', 'POST'])
 def create_bucketlist():
     """
     Renders the create bucket list page
     """
     if g.user:
-    
+
         if request.method == "POST":
             bucketlist_name = request.form['bucketlist_name']
             activity = []
             status = 'incomplete'
             bucketlist.create_bucket_list(bucketlist_name, activity, status)
             return redirect('/dashboard')
-            
+
         return render_template('create.html')
+
 
 @app.before_request
 def before_request():
@@ -75,13 +77,14 @@ def before_request():
         g.user = session['user']
 
 
-@app.route('/dashboard', methods=['GET'])
+@app.route('/dashboard')
 def dashboard():
     if g.user:
         buckets = BucketLists.bucketlists
-        return render_template('dashboard.html',data=buckets)
+        return render_template('dashboard.html', data=buckets)
     else:
         return redirect(url_for('home'))
+
 
 @app.route('/inprogress', methods=['GET'])
 def inprogress():
@@ -89,8 +92,9 @@ def inprogress():
     Renders the inprogress page containing  bucketlists that are not yet fully done
     """
     if g.user:
-        buckets=BucketLists.bucketlists
+        buckets = BucketLists.bucketlists
         return render_template('inprogress.html', data=buckets)
+
 
 @app.route('/add_activity', methods=['GET', 'POST'])
 def add_activity():
@@ -100,17 +104,22 @@ def add_activity():
             name = request.form['title']
             bucket_item.add_activity(name, item)
             bucket_items = bucket_item.get_items_of_bucket(name)
-            return redirect('/add_activity/'+name)
+            bucket_items_dict = []
+            for i in range(len(bucket_items)):
+                item = {"key": i + 1, "value": bucket_items[i]}
+                bucket_items_dict.append(item)
+            print(bucket_items_dict)
+            return render_template('add_activity.html', data=bucket_items_dict)
         else:
             name = request.form['title']
             bucket_items = bucket_item.get_items_of_bucket(name)
-            bucket_items_dict=[]
+            bucket_items_dict = []
             for i in range(len(bucket_items)):
-                item={"key":i+1,"value":bucket_items[i]}
+                item = {"key": i + 1, "value": bucket_items[i]}
                 bucket_items_dict.append(item)
             print(bucket_items_dict)
-            return render_template('add_activity.html/',data=bucket_items_dict)
-    
+            return render_template('add_activity.html/', data=bucket_items_dict)
+
     return redirect(url_for('home'))
 
 
