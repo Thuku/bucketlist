@@ -4,7 +4,8 @@
     <title>
         BucketList
     </title>
-    <link rel="stylesheet" type="text/css" href="res/css/materialize.css">
+    <script src="{{ url_for('static', filename='js/materialize.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/materialize.css') }}">
 </head>
 
 <body>
@@ -19,24 +20,26 @@
         <br>
         <div class="container center-align">
             <div style="display: inline-block;">
-                <form action="">
+                <form action="/signup" method="post">
                     <p>
                         <label for="email" required>Email address:</label>
-                        <input type="email">
+                        <input name="email" type="email">
 
                     </p>
                     <p>
                         <label for="password" required>Password:</label>
-                        <input type="password">
+                        <input name="password" type="password">
                     </p>
                     <p>
                         <label for="password" required>Confirm password:</label>
-                        <input type="password">
+                        <input name="confirm_password" type="password">
                     </p>
                     <br>
                     <p>
-                        <a class="waves-effect waves-light btn-large">Sign up</a>
-                    </p>
+
+                        <button class="btn waves-effect waves-light" type="submit">Signup
+                        <i class="material-icons right"></i>
+                        </button> </p>
 
                 </form>
             </div>
