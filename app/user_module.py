@@ -12,13 +12,14 @@ class User(object):
         """
         Create a new user in the list
         """
-        while len(password) >6 and len(confirm_password)>6:
+        while len(password) > 6 and len(confirm_password) > 6:
             if password != confirm_password:
                 error = "Password mismatch. Please try again"
                 return error
             else:
-                user_id = len(self.users)+1
-                new_user = {"id": user_id, "email": email, "password": password}
+                user_id = len(self.users) + 1
+                new_user = {"id": user_id,
+                            "email": email, "password": password}
 
                 emails = set((user['email']) for user in self.users)
                 if (new_user['email']) not in emails:
@@ -32,7 +33,6 @@ class User(object):
         else:
             error = "Password length is less than 6 characters"
             return error
-        
 
     def login(self, email, password):
         for user in self.users:

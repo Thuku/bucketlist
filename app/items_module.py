@@ -17,11 +17,10 @@ class BucketListItems(object):
 
                 # print(values)
                 # print(all_buckets)
-    
-    def get_items_of_bucket(self,bucket_name):
+
+    def get_items_of_bucket(self, bucket_name):
         for i in BucketLists.bucketlists:
             if i['name'] == bucket_name:
                 bucket_items = i['activity']
                 print(bucket_items)
                 return bucket_items
-
